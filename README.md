@@ -1,4 +1,4 @@
-# Sistema_de_recomendacion
+# Sistema de Recomendación de Noticias Sobre Clientes Corporativos
 
 Repositorio correspondiente al proyecto **Sistema de recomendación de noticias sobre clientes corporativos**, elaborado por Marcela Toro, Natalia Sierra y Juan Latorre.
 
