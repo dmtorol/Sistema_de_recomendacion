@@ -10,6 +10,7 @@ Fuente de datos: https://www.kaggle.com/datasets/juancamilodiazzapata/dataton-20
 Los datos utilizados en este estudio provienen del Dataton 2022, una competencia organizada por el Centro de Excelencia en Analítica, Inteligencia Artificial y Gobierno de Información del Grupo Bancolombia .  Se dividen en tres bases principales: clientes, noticias y cliente_noticias que es la relación entre ambos.
 
 Descripción del contenido de las variables 
+
 clientes.csv: Archivo con el listado de clientes a consultar, la descripción de su actividad económica y el subsector
 -	nit: Identificador único del cliente
 -	nombre: Nombre corporativo del cliente
@@ -17,6 +18,7 @@ clientes.csv: Archivo con el listado de clientes a consultar, la descripción de
 -	desc_ciiu_grupo: Descripción por grupo de la clasificación Industrial uniforme d todas las actividades económicas
 -	desc_ciiu_clase: : Descripción por clase de la clasificación Industrial uniforme d todas las actividades económicas
 -	subsector: Clasificación de la actividad industrial
+	
 noticias.csv: Contenido de cada una de las noticias consultadas
 -	new_id: Identificador único de noticias
 -	news_url_absolute: Url de la noticia encontrada
