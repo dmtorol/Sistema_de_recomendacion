@@ -5,6 +5,7 @@ import pandas as pd
 import streamlit as st
 from gensim import  models
 from gensim.corpora import Dictionary
+import requests
 
 st.title ("Sistema de Recomendación de Noticias Sobre Clientes Corporativos")
 #st.header("Seguimiento de Datos de Entrada")
@@ -82,12 +83,10 @@ num_reco = st.selectbox(
 
 #st.write('You selected:', option)
 
-
-
 #reco_id = 0
 
-
 if (new != None) and (num_reco != None):
-    st.dataframe(recomendador_lda(df_news.news_title[new_id], df_news, num_reco).rename({'news_title':'Noticia', 'subsec':'Actividad Económica Principal'}, axis=1))
-
-
+    url = "http://127.0.0.1:5000/predict"
+    data = {'num_reco': num_reco, 'news_title': df_news.news_title[new_id]}
+    response = requests.post(url, json=data)
+    st.dataframe(pd.read_json(response.json()['resultado'], orient='records').rename({'news_title':'Noticia', 'subsec':'Actividad Económica Principal'}, axis=1))
