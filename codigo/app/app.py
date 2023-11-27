@@ -19,9 +19,8 @@ st.caption("Seguimiento de Datos de Entrada")
 #####################
 
 clientes = pd.read_csv('./clientes.csv')
-df_cli =  clientes.desc_ciiuu_clase.value_counts().reset_index()
-df_cli = df_cli.rename({'index':'Actividad Económica', 'desc_ciiuu_clase':'Nro. Noticias'}, axis=1)
-df_cli['% Noticias'] = (df_cli['Nro. Noticias']/len(df_cli)*100).round(2)
+df_cli =  ((clientes.desc_ciiuu_clase.value_counts()/len(clientes))*100).round(2)
+df_cli = df_cli.reset_index().rename({'index':'Actividad Económica', 'desc_ciiuu_clase':'% Noticias'}, axis=1).copy()
 df_cli['% Noticias'] = df_cli['% Noticias'].astype(str) + '%'
 
 ###################################################
