@@ -40,7 +40,7 @@ def recomendador_lda(news_title, df, num_reco):
     df = df[df.subsec == subsec_new]
     df = df[df.news_title != news_title].copy()
 
-    return df[df.topic == topic_new].sort_values(by='topic_proba', ascending=False)[['news_title',	'subsec']].reset_index(drop=True)[0:num_reco]
+    return df[df.topic == topic_new].sort_values(by='topic_proba', ascending=False)[['news_title','subsec', 'news_url_absolute']].reset_index(drop=True)[0:num_reco]
 
 
 
