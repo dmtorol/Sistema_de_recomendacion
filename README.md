@@ -32,3 +32,5 @@ clientes_noticias.csv: Relación entre cliente y las noticias consultadas median
 -	news_url_absolute: url de la noticia encontrada
 -	news_init_date: Fecha mínima del intevalo de tiempo al que pertenece la noticia
 -	news_final_date: Fecha máxima del del intevalo de tiempo al que pertenece la noticia
+
+URL del tablero (http://44.202.237.158:8502/)
