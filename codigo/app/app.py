@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+##!/usr/bin/env python
 # coding: utf-8
 
 import pandas as pd
@@ -21,7 +21,9 @@ st.caption("Seguimiento de Datos de Entrada")
 
 clientes = pd.read_csv('./clientes.csv')
 df_cli =  ((clientes.desc_ciiuu_clase.value_counts()/len(clientes))*100).round(2)
-df_cli = df_cli.reset_index().rename({'index':'Actividad Económica', 'desc_ciiuu_clase':'% Noticias'}, axis=1).copy()
+df_cli = df_cli.reset_index().rename({'index':'Actividad Económica', 
+                                      'desc_ciiuu_clase':'% Noticias', 
+                                      'news_url_absolute':'url'}, axis=1).copy()
 df_cli['% Noticias'] = df_cli['% Noticias'].astype(str) + '%'
 
 ###################################################
@@ -58,7 +60,7 @@ def recomendador_lda(news_title, df, num_reco):
     df = df[df.subsec == subsec_new]
     df = df[df.news_title != news_title].copy()
 
-    return df[df.topic == topic_new].sort_values(by='topic_proba', ascending=False)[['news_title',	'subsec']].reset_index(drop=True)[0:num_reco]
+    return df[df.topic == topic_new].sort_values(by='topic_proba', ascending=False)[['news_title','subsec','news_url_absolute']].reset_index(drop=True)[0:num_reco]
 
 st.header("Sistema de recomendación")
 #new = 2
