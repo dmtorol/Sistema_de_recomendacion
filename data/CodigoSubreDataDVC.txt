@@ -1,0 +1,46 @@
+cd C:/Users/dmtor/Downloads/Despliegue/SistemaRec/dataton
+ssh -i proyecto.pem ubuntu@52.87.251.46
+
+sudo apt update
+sudo apt install python3-pip
+sudo apt install python3.10-venv
+python3 -m venv /home/ubuntu/env-dvc
+
+####################################################
+source env-dvc/bin/activate
+####################################################
+pip install "dvc[s3]"
+
+mkdir dvc-proj
+cd dvc-proj
+mkdir data
+
+
+####################################################
+Desde una terminal aparte ####################################################
+####################################################
+cd C:/Users/dmtor/Downloads/Despliegue/SistemaRec/dataton
+scp -i proyecto.pem C:/Users/dmtor/Downloads/Despliegue/SistemaRec/dataton/noticias.csv ubuntu@52.87.251.46:/home/ubuntu/dvc-proj/data/
+scp -i proyecto.pem C:/Users/dmtor/Downloads/Despliegue/SistemaRec/dataton/clientes.csv ubuntu@52.87.251.46:/home/ubuntu/dvc-proj/data/
+scp -i proyecto.pem C:/Users/dmtor/Downloads/Despliegue/SistemaRec/dataton/clientes_noticias.csv ubuntu@52.87.251.46:/home/ubuntu/dvc-proj/data/
+
+########################################################################################################
+
+cd dvc-proj
+git init 
+git branch -m main
+dvc init -f
+git status
+git commit -m "Inicializacion de DVC"
+
+
+dvc add data/noticias.csv data/clientes.csv data/clientes_noticias.csv
+
+git add data/noticias.csv.dvc data/clientes.csv.dvc data/clientes_noticias.csv.dvc data/.gitignore
+
+git commit -m "Add initial data "
+
+git remote add origin https://github.com/dmtorol/Sistema_de_recomendacion.git
+git pull origin main --rebase
+git push origin main
+git push -u origin main
