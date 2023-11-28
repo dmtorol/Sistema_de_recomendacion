@@ -62,4 +62,4 @@ df_news['topic_proba'] = topic_proba
 
 # Ejecutar la aplicación en el puerto 5000 de forma predeterminada
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=False, host='0.0.0.0', port=8080)
